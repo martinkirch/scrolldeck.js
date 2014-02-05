@@ -39,6 +39,24 @@
 			
 			buttons = $(scrolldeck.settings.buttons);
 			slides = $(scrolldeck.settings.slides);
+			
+			var windowHeight = $(window).height();
+			var windowWidth =  $(window).width();
+			
+			for (i=0; i<slides.length; i++) {
+				var el = slides.eq(i);
+				
+				// if slides are images, assign height to auto for proportional scaling
+				if (el.prop('tagName').toUpperCase() === 'IMG') {
+					el.css('height','auto');
+				}
+				
+				// if slide is shorter than height of window, increase height
+  			if (el.outerHeight() < windowHeight) {
+  				el.height(el.height()+windowHeight-el.outerHeight());
+  			}
+			}
+			
 			scrolldeck.controller = $.scrollorama({blocks:slides, offset:scrolldeck.settings.offset});
 			
 			// add animations with scrollorama
@@ -48,14 +66,12 @@
 				anim = $('.animate-in').eq(i);
 				switch (anim.attr('data-animation')) {
 					case 'fly-in-left':
-						anim
-							.parent().css('overflow','hidden');
-						scrolldeck.controller.animate(anim, { delay: windowHeight/2, duration: windowHeight/2, property:'left', start:-1200 });
+						anim.closest(scrolldeck.settings.slides).css('overflow','hidden');
+						scrolldeck.controller.animate(anim, { delay: windowHeight/2, duration: windowHeight/2, property:'left', start:-windowWidth });
 						break;
 					case 'fly-in-right':
-						anim
-							.parent().css('overflow','hidden');
-						scrolldeck.controller.animate(anim, { delay: windowHeight/2, duration: windowHeight/2, property:'right', start:-1200 });
+						anim.closest(scrolldeck.settings.slides).css('overflow','hidden');
+						scrolldeck.controller.animate(anim, { delay: windowHeight/2, duration: windowHeight/2, property:'right', start:-windowWidth });
 						break;
 					case 'space-in':
 						scrolldeck.controller.animate(anim, { delay: windowHeight*0.8, duration: windowHeight*0.2, property:'letter-spacing', start:40 });
@@ -74,12 +90,12 @@
 				anim = $('.animate-build').eq(i);
 				switch (anim.attr('data-animation')) {
 					case 'fly-in-left':
-						anim.parent().css('overflow','hidden');
-						scrolldeck.controller.animate(anim, { delay: (anim.attr('data-build')-1)*400, duration: 400, property:'left', start:-1200, pin:true });
+						anim.closest(scrolldeck.settings.slides).css('overflow','hidden');
+						scrolldeck.controller.animate(anim, { delay: (anim.attr('data-build')-1)*400, duration: 400, property:'left', start:-windowWidth, pin:true });
 						break;
 					case 'fly-in-right':
-						anim.parent().css('overflow','hidden');
-						scrolldeck.controller.animate(anim, { delay: (anim.attr('data-build')-1)*400, duration: 400, property:'right', start:-1200, pin:true });
+						anim.closest(scrolldeck.settings.slides).css('overflow','hidden');
+						scrolldeck.controller.animate(anim, { delay: (anim.attr('data-build')-1)*400, duration: 400, property:'right', start:-windowWidth, pin:true });
 						break;
 					case 'space-in':
 						scrolldeck.controller.animate(anim, { delay: (anim.attr('data-build')-1)*400, duration: 400, property:'letter-spacing', start:40, pin:true });
@@ -128,20 +144,6 @@
 					scrollToSlide(getNextScrollpoint());
 				}
 			});
-			
-			// if slides are images, assign height to auto for proportional scaling
-			for (i=0; i<slides.length; i++) {
-				var el = slides.eq(i);
-				if (el.prop('tagName').toUpperCase() === 'IMG') {
-					el.css('height','auto');
-				}
-			}
-			
-			// if last slide is shorter than height of window, increase height
-			var lastSlide = slides.eq(slides.length-1);
-			if (lastSlide.outerHeight() < $(window).height()) {
-				lastSlide.height(lastSlide.height()+$(window).height()-lastSlide.outerHeight());
-			}
 			
 			updateNav();
 		};
