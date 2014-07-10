@@ -1,66 +1,80 @@
-/*
-	COLORS
- 
-	Dark Blue 			#222438
-	Medium Blue			#959db5
-	Light Blue	 		#c9d5e1
-	Dark Blue Links		#1a4a6a
-	
-*/
-
 body {
 	font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
 	font-size: 30px;
 	font-size: 3rem;
 	text-align: center;
-	background-color: #c9d5e1;
+	background: white;
+	color: #222;
+}
+
+section {
+	margin: 0 auto;
+	width: 100%;
+	padding: 0;
 }
 
 h1 {
-	font-size: 180px;
-	font-size: 18rem;
-	margin: 0;
-	text-shadow: 0 2px 1px #fff;
+	margin: 25px 0 25px 0;
+	margin: 2.5rem 0 2.5rem 0;
+	font-size: 60px;
+	font-size: 6rem;
+	text-shadow: 3px 3px 2px #000;
+}
+
+h2 {
+	font-size: 40px;
+	font-size: 4rem;
+	text-shadow: 2px 2px 1px #000;
+}
+
+h3 {
+	font-size: 30px;
+	font-size: 3rem;
+	text-shadow: 1px 1px 1px #000;
 }
 
 p {
 	width: 80%;
 	margin: 20px auto;
 	margin: 2rem auto;
-	text-shadow: 0 1px 1px #fff;
 	line-height: 1.2;
+	text-align: left;
 }
 
-a, a:visited {
-	color: #1a4a6a;
-	font-weight: bold;
-	font-style: italic;
-	text-shadow: none;
+footer {
+  bottom:0;
+  width:100%;
+  font-size:20px;
+  font-size:2rem;
+	margin: 15px auto;
+	margin: 1.5rem auto;
 }
 
-small {
-	line-height: 1;
-	font-style: italic;
-	font-size: 20px;
-	font-size: 2rem;
-	text-shadow: 0 1px 0 #fff;
+.math {
+  font-family: serif;
+  font-style: italic;
 }
 
-.download {
-	padding-left: 15px;
-	padding-left: 1.5rem;
-}
-
-.pro-tip {
-	display: block;
-	padding: 20px;
-	padding: 2rem;
-	text-shadow: 0 1px 0 #fff;
-}
+/*----------------------------------------  CODE  */
 
 pre {
-	font-size: 18px;
-	font-size: 1.8rem;
+	font-size: 20px;
+	font-size: 2rem;
+	font-family: monospace;
+	border: solid thick #a00;
+	background: #eee;
+	border-radius: 1em;
+	padding : 0.5em;
+	box-shadow: black 0.2em 0.2em 0.1em;
+	display: inline-block;
+	text-align: left;
+}
+
+code {
+	font-family : monospace;
+	font-weight: bold;
+	padding-left: 5px;
+	padding-left: .5rem;
 }
 
 blockquote {
@@ -68,133 +82,144 @@ blockquote {
 	width: 70%;
 	margin: 10px auto;
 	margin: 1rem auto;
-	background: #fff;
-	border: solid 3px #959db5;
+	border-left:0.1em solid #333;
 	padding: 0 40px;
 	padding: 0 4rem;
 	border-radius: 6px;
 	border-radius: .6rem;
+	font-style: italic;
+	background: #EEE;
 }
 
-code {
-	font-style: normal;
-	padding-left: 5px;
-	padding-left: .5rem;
+/*----------------------------------------  LISTS  */
+
+ul, ol {
+  margin: 0;
+  text-align: left;
+  display:inline-block;
+  vertical-align:top;
 }
 
-/*----------------------------------------  HEADER  */
+li ul, li ol {
+  margin: 0;
+}
 
-#header {
+li {
+  margin-left: 10px;
+  margin-left: 1rem;
+  line-height:1.5;
+}
+
+ul li, li ul li {
+  list-style-type: disc;
+}
+
+ol li {
+  list-style-type: decimal;
+}
+
+ol ol li {
+  list-style-type: lower-roman;
+}
+
+
+/*------------------------  DEFINITIONZ */
+
+body {
+  counter-reset: defcounter;
+}
+
+dl {
+  display: inline-block;
+  width: 70%;
+  text-align:left;
+  border-radius: 0.5em;
+  box-shadow: 0.1em 0.1em 0.3em #888;
+  font-family: serif;
+  margin:0;
+}
+
+dt {
+  background: #4054A4;
+  color: white;
+  border-radius: 0.5em 0.5em 0 0;
+  padding: 0.5rem 2rem;
+  font-style: italic;
+}
+
+dt:before {
+  counter-increment: defcounter;
+  content: "Definition " counter(defcounter) ": ";
+}
+
+dd {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+
+/* ----------------------- REFZ */
+
+body {
+	counter-reset: bibcounter;
+}
+
+.bibs {
+	position: absolute;
+	bottom: 1em;
 	width: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 10;
-	background: #222438;
-	border-bottom: solid 3px #959db5;
-	padding: 5px;
-	padding: .5rem;
-	opacity: .9;
-}
-
-#instructions {
-	position: fixed;
-	top: 25px;
-	left: 40px;
-	background: #fff;
-	border: solid 3px #959db5;
-	padding: 5px 10px;
-	text-transform: uppercase;
-	width: 180px;
-	border-radius: 10px;
 	font-size: 14px;
-	font-weight: bold;
-	z-index: 99;
-	color: #222438
-}
-
-#powered {
-	font-weight: bold;
-	padding-bottom: 20px;
-}
-
-.nav-button {
-	padding: 10px;
-	padding: 1rem;
-	text-decoration: none;
-	color: #959db5;
-	font-size: 20px;
-	font-size: 2rem;
-	text-shadow: 0 -1px 1px #000;
-	text-transform: uppercase;
-	font-weight: bold;
-	font-style: normal;
-}
-
-.current, a.nav-button:hover {
-	color: #fff;
-}
-
-#resize-graphic {
-	position: fixed;
-	bottom: 0;
-	right: 0;
-	opacity: .6;
-}
-
-/*----------------------------------------  SLIDES  */
-
-.slide {
-	margin: 0 auto;
-	width: 99%;
-	padding: 120px 0;
-	padding: 12rem 0;
-	height: 40rem;
-}
-
-#title {
-	line-height: .8;
-}
-
-#author {
-	width: 75%;
-	font-size: 20px;
-	font-size: 2rem;
-	margin: 0 auto;
-	padding-bottom: 20px;
-	padding-bottom: 2rem;
-	text-align: right;
+	font-size: 1.4rem;
 	font-style: italic;
 }
 
-.twitter-follow-button {
-	position: relative;
-	top: 8px;
-	left: 4px;
+.bibs p {
+	margin-top:0;
+	margin-bottom:0;
 }
 
-#animations {
-	padding-top: 70px;
-	padding-top: 7rem;
-	height: 480px;
-	height: 48rem;
+.bib:before {
+	counter-increment: bibcounter;
+	content: "[" counter(bibcounter) "] ";
 }
 
-#examples h1 {
-	padding-bottom: 20px;
-	padding-bottom: 2rem;
+
+
+/*------------------------  TABLEZ */
+
+table {
+  box-shadow: 0.1em 0.1em 0.3em #888;
+  border-radius: 0.2em;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0 auto;
 }
 
-#examples, #examples p, #credits {
-	line-height: .8;
+th {
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  background: #4054A4;
 }
 
-#examples p {
-	padding-top: 20px;
+th:first-child {
+  border-radius: 0.2em 0 0 0;
 }
 
-#credits a {
-	padding-right: 3px;
+th:last-child {
+  border-radius: 0 0.2em 0 0;
+}
+
+td, th {
+  padding: 0.3em;
+}
+
+td:nth-child(n+2), th:nth-child(n+2) {
+  border-left: 2px solid white;
+}
+
+tr:nth-child(2n) {
+  background: #DBFFFF;
 }
 
 /*------------------------  BASE-REM SIZING  */
@@ -202,67 +227,67 @@ code {
 
 @media (min-width: 1520px) {
 	html {
-		font-size: 12px;
+		font-size: 16px;
 	}
 }
 
 @media (max-width: 1400px) {
 	html {
-		font-size: 11px;
+		font-size: 15px;
 	}
 }
 
 /* target screen width  */
 @media (max-width: 1280px) {
 	html {
-		font-size: 10px;
+		font-size: 14px;
 	}
 }
 	
 @media (max-width: 1160px) {
 	html {
-		font-size: 9px;
+		font-size: 13px;
 	}
 }
 	
 @media (max-width: 1040px) {
 	html {
-		font-size: 8px;
+		font-size: 12px;
 	}
 }
 	
 @media (max-width: 920px) {
 	html {
-		font-size: 7px;
+		font-size: 11px;
 	}
 }
 	
 @media (max-width: 800px) {
 	html {
-		font-size: 6px;
+		font-size: 10px;
 	}
 }
 	
 @media (max-width: 680px) {
 	html {
-		font-size: 5px;
+		font-size: 9px;
 	}
 }
 	
 @media (max-width: 560px) {
 	html {
-		font-size: 4px;
+		font-size: 8px;
 	}
 }
 	
 @media (max-width: 440px) {
 	html {
-		font-size: 3px;
+		font-size: 7px;
 	}
 }
 
 @media (max-width: 320px) {
 	html {
-		font-size: 3px;
+		font-size: 6px;
 	}
 }
